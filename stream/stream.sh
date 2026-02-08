@@ -5,5 +5,5 @@ ffmpeg -re -stream_loop -1 \
     -tune zerolatency \
     -c:a aac \
     -f rtsp \
-    -rtsp_transport tcp \
+    -rtsp_transport udp \
     rtsp://mediamtx:8554/cam

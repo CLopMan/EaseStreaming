@@ -4,7 +4,7 @@ Basic web interface for mediamtx server. Combine nginx proxy with mediamtx to co
 
 ## How it works
 - ffmpeg: publish a rstp stream
-    - tcp
+    - **udp**
     - H.264 encoding
 - mediamtx: acts as media server. restreams using HLS
 - nginx: severs a basic web interface with the streaming
