@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+</head>
+<body>
+  <video id="video" controls autoplay muted></video>
+
+  <script>
+    const video = document.getElementById('video');
+    const server = window.location.origin;
+    const src = `${server}:8888/cam/index.m3u8`;
+
+    if (Hls.isSupported()) {
+      const hls = new Hls(
+        {
+          liveSyncDuration: 1,
+          maxBufferLength: 3,
+          enableWorker: true
+        }
+      );
+      hls.loadSource(src);
+      hls.attachMedia(video);
+      hls.startLoad();
+    } else if (video.canPlayType('application/vnd.apple.mpegurl')) {
+      video.src = src; // Safari
+    }
+  </script>
+</body>
+</html>
+

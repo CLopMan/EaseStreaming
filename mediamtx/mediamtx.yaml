@@ -1,0 +1,12 @@
+hls: yes
+hlsAddress: :8888
+hlsSegmentDuration: 2s
+hlsSegmentCount: 6
+hlsDirectory: /hls
+
+paths:
+  cam:
+    source: rtsp://stream:8554/cam
+    sourceProtocol: tcp
+
+

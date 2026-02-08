@@ -1,0 +1,38 @@
+services:
+  # streaming server
+  mediamtx:
+    image: bluenviron/mediamtx:1
+    container_name: mediamtx
+    ports:
+      - "8554:8554"   # RTSP
+      - "8888:8888"   # HLS
+      - "8889:8889"   # WebRTC
+    volumes:
+      - ./mediamtx/mediamtx.yaml:/mediamtx.yaml
+    restart: unless-stopped
+
+  # proxy
+  nginx:
+    image: nginx:latest
+    container_name: nginx-proxy
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx/conf:/etc/nginx/conf.d
+      - ./nginx/logs:/var/log/nginx
+      - ./nginx/html:/usr/share/nginx/html
+    restart: unless-stopped
+
+    # Stream simulator: just testing
+  stream:
+    build: stream
+    container_name: stream
+    volumes:
+      - ./stream:/stream
+    restart: unless-stopped
+    depends_on: 
+      - mediamtx
+
+
+
