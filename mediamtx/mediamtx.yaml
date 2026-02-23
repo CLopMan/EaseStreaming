@@ -5,8 +5,11 @@ hlsSegmentCount: 6
 hlsDirectory: /hls
 
 paths:
-  cam:
-    source: rtsp://stream:8554/cam
+  cam1:
+    source: rtsp://stream_seal:8554/test
+    sourceProtocol: tcp
+  cam2:
+    source: rtsp://stream_cat:8554/video
     sourceProtocol: tcp
 
 

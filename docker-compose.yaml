@@ -25,14 +25,25 @@ services:
     restart: unless-stopped
 
     # Stream simulator: just testing
-  stream:
+  stream_seal:
     build: stream
-    container_name: stream
+    container_name: stream_seal
+    environment:
+      STREAM: "test.mp4"
     volumes:
       - ./stream:/stream
     restart: unless-stopped
     depends_on: 
       - mediamtx
 
-
+  stream_cat:
+    build: stream
+    container_name: stream_cat
+    environment:
+      STREAM: "video.mp4"
+    volumes:
+      - ./stream:/stream
+    restart: unless-stopped
+    depends_on: 
+      - mediamtx
 

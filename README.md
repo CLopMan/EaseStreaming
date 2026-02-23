@@ -21,6 +21,7 @@ docker compose up
 Serves as basic proxy
 #### mediamtx
 Contains the media server
-#### Stream
-Acts a stream simulator 
+#### Simulators
+Both stream\_seal and stream\_micro acts as streaming simulators
+- Cannot stream in the same path!
 
